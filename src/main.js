@@ -6,6 +6,10 @@ import './assets/css/normalize.css'
 // 引入remjs
 import 'amfe-flexible'
 
+import Vant from 'vant'
+import 'vant/lib/index.css'
+Vue.use(Vant)
+
 Vue.config.productionTip = false
 
 new Vue({
