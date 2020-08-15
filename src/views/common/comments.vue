@@ -7,12 +7,12 @@
         @load="onLoad"
         >
             <van-row v-for="item in comments" :key="item.id">
-                <h6><span>第{{item.count}}楼</span>&nbsp;<span>用户:匿名用户</span>&nbsp;<span>发表时间:{{item.date | dateFormat('yyyy-MM-DD')}}</span></h6>
+                <h6><span>第{{item.count}}楼</span>&nbsp;&nbsp;<span>用户:匿名用户</span>&nbsp;&nbsp;<span>发表时间:{{item.date | dateFormat('yyyy-MM-DD')}}</span></h6>
                 <p class="text">{{item.message}}</p>
             </van-row>
         </van-list>
-        <van-row>
-            <van-button color="#F02940" type="primary" block plain>加载更多</van-button>
+        <van-row v-model="finished">
+            <van-button color="#F02940" type="primary" v-show="!finished" block plain @loading="onLoad">加载更多</van-button>
         </van-row>
     </div>
 </template>
@@ -37,10 +37,10 @@ export default {
         this.loading = false
         // 数据全部加载完成
         console.log(this.comments)
-        if (this.comments.length >= 0) {
+        if (this.comments.length >= this.comments.length - 1) {
           this.finished = true
         }
-      }, 1000)
+      }, 2000)
     }
   }
 }
@@ -54,6 +54,8 @@ h6{
 }
 .text{
     text-indent : 20px;
-    font-size: 16px
+    font-size: 16px;
+    word-wrap: break-word;
+    word-break: break-all
 }
 </style>

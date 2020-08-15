@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import TabBar from '../components/tabbar/TabBar'
-import NewsList from '../components/News/NewsList.vue'
-import Newsdetails from '../components/News/Newsdetails.vue'
+import NewsList from '../views/News/NewsList.vue'
+import Newsdetails from '../views/News/Newsdetails.vue'
 
 Vue.use(VueRouter)
 

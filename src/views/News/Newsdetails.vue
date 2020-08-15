@@ -83,6 +83,7 @@ export default {
         this.message = ''
       }
       console.log(this.comments)
+      this.$emit('loading')
     }
   }
 }
