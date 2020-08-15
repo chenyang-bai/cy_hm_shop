@@ -32,7 +32,7 @@
                 <p class="text">{{item.message}}</p>
                 <van-row type="flex" justify="center"><van-loading size="24px" >加载中...</van-loading></van-row>
             </van-row> -->
-            <comment :comments="comments"></comment>
+            <comment :comments="comments" :artid="id"></comment>
         </div>
     </div>
 </template>
@@ -66,24 +66,30 @@ export default {
     console.log(this.detail)
   },
   methods: {
-    published () {
+    async published () {
     //   console.log(123)
-      if (this.message === '') {
+      if (this.message.trim() === '') {
         // 警告通知
         Notify({ type: 'warning', message: '请输入评论内容' })
         return
+      } else {
+        console.log(this.message)
+        const content = this.message
+        const { data: res } = await this.$http.post('/api/postcomment/' + this.id, { content })
+        Notify({ type: 'success', message: res.message })
+        console.log(res)
       }
       if (this.comments.length >= 0) {
         this.count++
         this.comments.push({
-          count: this.count,
-          date: this.date,
-          message: this.message
+          user_name: '匿名用户',
+          add_time: this.date,
+          content: this.message
         })
         this.message = ''
       }
       console.log(this.comments)
-      this.$emit('loading')
+      location.reload()
     }
   }
 }
