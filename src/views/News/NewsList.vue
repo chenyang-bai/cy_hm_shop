@@ -75,6 +75,7 @@ export default {
           this.list = []
           this.refreshing = false
         }
+        // 调用新闻列表数据
         const { data: res } = await this.$http.get('/api/getnewslist')
         this.newslist = res.message
         // 加载状态结束

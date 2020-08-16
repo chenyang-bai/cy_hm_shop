@@ -43,6 +43,7 @@ export default {
     Comment,
     TabBar
   },
+  // 处理url地址数据，根据id获取新闻详情
   async mounted () {
     console.log(window.location.search.split('?'))
     this.id = window.location.search.split('?')[1]

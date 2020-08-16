@@ -36,7 +36,7 @@ export default {
       loading: false,
       finished: false,
       comment: [],
-      comments: [],
+      // comments: [],
       message: '',
       date: new Date(),
       count: ''
@@ -55,20 +55,21 @@ export default {
       } else {
         console.log(this.message)
         const content = this.message
+        // 发表评论
         const { data: res } = await this.$http.post('/api/postcomment/' + this.artid, { content })
         Notify({ type: 'success', message: res.message })
         console.log(res)
       }
-      if (this.comments.length >= 0) {
-        this.count++
-        this.comments.push({
-          user_name: '匿名用户',
-          add_time: this.date,
-          content: this.message
-        })
-        this.message = ''
-      }
-      console.log(this.comments)
+      // if (this.comments.length >= 0) {
+      //   this.count++
+      //   this.comments.push({
+      //     user_name: '匿名用户',
+      //     add_time: this.date,
+      //     content: this.message
+      //   })
+      //   this.message = ''
+      // }
+      // console.log(this.comments)
       location.reload()
     },
     onLoad () {
