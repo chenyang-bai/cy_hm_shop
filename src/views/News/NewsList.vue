@@ -6,7 +6,6 @@
             <van-list
             v-model="loading"
             :finished="finished"
-            finished-text="没有更多了"
             @load="onLoad"
             >
             <ul>
@@ -41,11 +40,13 @@
                 </van-row>
             </template>
             </van-card> -->
+            <tab-bar></tab-bar>
         </div>
     </div>
 </template>
 <script>
 import NavBar from '../common/NavBar'
+import TabBar from '../../components/tabbar/TabBar'
 export default {
   props: [],
   data () {
@@ -57,7 +58,8 @@ export default {
     }
   },
   components: {
-    NavBar
+    NavBar,
+    TabBar
   },
   async mounted () {
     const { data: res } = await this.$http.get('/api/getnewslist')
@@ -102,7 +104,7 @@ export default {
     margin: 0 10px;
 }
 .van-card{
-    border-bottom: 1px solid #999;
+    border-bottom: 2px solid #F4F4F4;
     font-size: 14px;
 }
 .van-row:nth-child(2){
